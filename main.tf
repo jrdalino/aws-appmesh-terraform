@@ -24,7 +24,9 @@ resource "aws_appmesh_virtual_service" "this" {
     }
   }
 
-  # tags  
+  # tags
+
+  depends_on = [aws_appmesh_mesh.this]  
 }
 
 # Virtual Router
@@ -42,6 +44,8 @@ resource "aws_appmesh_virtual_router" "this" {
   }
 
   # tags
+
+  depends_on = [aws_appmesh_mesh.this]
 }
 
 # Virtual Node
@@ -79,33 +83,35 @@ resource "aws_appmesh_virtual_node" "this" {
   } 
 
   # tags
+
+  depends_on = [aws_appmesh_mesh.this]
 }
 
-# Virtual Route (HTTP Routing)
-resource "aws_appmesh_route" "this" {
-  mesh_name = var.aws_appmesh_mesh_name
-  name = var.aws_appmesh_route_name
-  virtual_router_name = aws_appmesh_virtual_router.this.name
+# # Virtual Route (HTTP Routing)
+# resource "aws_appmesh_route" "this" {
+#   mesh_name = var.aws_appmesh_mesh_name
+#   name = var.aws_appmesh_route_name
+#   virtual_router_name = aws_appmesh_virtual_router.this.name
 
-  spec {
-    http_route {
-      match {
-          prefix = "/"
-      }
+#   spec {
+#     http_route {
+#       match {
+#           prefix = "/"
+#       }
  
-      action {
-        weighted_target {
-          virtual_node = aws_appmesh_virtual_node.this.name
-          weight = 100
-        }
+#       action {
+#         weighted_target {
+#           virtual_node = aws_appmesh_virtual_node.this.name
+#           weight = 100
+#         }
 
-        # weighted_target {
-        #   virtual_node = aws_appmesh_virtual_node.serviceb2.name
-        #   weight = 10
-        # }        
-      }
-    }
-  }
+#         # weighted_target {
+#         #   virtual_node = aws_appmesh_virtual_node.serviceb2.name
+#         #   weight = 10
+#         # }        
+#       }
+#     }
+#   }
 
-  # tags  
-}
+#   # tags  
+# }

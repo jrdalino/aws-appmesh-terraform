@@ -82,23 +82,23 @@ output "aws_appmesh_virtual_node_last_updated_date" {
   description = "The last update date of the virtual node."
 }
 
-# Virtual Route
-output "aws_appmesh_route_id" {
-  value       = "${aws_appmesh_route.this.id}"
-  description = "The ID of the route."
-}
+# # Virtual Route
+# output "aws_appmesh_route_id" {
+#   value       = "${aws_appmesh_route.this.id}"
+#   description = "The ID of the route."
+# }
 
-output "aws_appmesh_route_arn" {
-  value       = "${aws_appmesh_route.this.arn}"
-  description = "The ARN of the route."
-}
+# output "aws_appmesh_route_arn" {
+#   value       = "${aws_appmesh_route.this.arn}"
+#   description = "The ARN of the route."
+# }
 
-output "aws_appmesh_route_created_date" {
-  value       = "${aws_appmesh_route.this.created_date}"
-  description = "The creation date of the route."
-}
+# output "aws_appmesh_route_created_date" {
+#   value       = "${aws_appmesh_route.this.created_date}"
+#   description = "The creation date of the route."
+# }
 
-output "aws_appmesh_route_last_updated_date" {
-  value       = "${aws_appmesh_route.this.last_updated_date}"
-  description = "The last update date of the route."
-}
+# output "aws_appmesh_route_last_updated_date" {
+#   value       = "${aws_appmesh_route.this.last_updated_date}"
+#   description = "The last update date of the route."
+# }
